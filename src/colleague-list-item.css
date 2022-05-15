@@ -1,0 +1,8 @@
+.img-list-container {
+    text-align: left;
+}
+.colleague-list-image {
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+}
