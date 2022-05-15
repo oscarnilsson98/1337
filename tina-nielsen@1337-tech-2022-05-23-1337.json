@@ -1,0 +1,1 @@
+{"header":"Authorization: api-key 14:2022-05-09:tina.nielsen@1337.tech 1f1f445b589522ce9192b70ef9738044e3470a522bba60101b6bbe500ec94f8e","exampleCurl":"curl --location -v 'https://api.1337co.de/v3/employees' --header 'Authorization: api-key 14:2022-05-09:tina.nielsen@1337.tech 1f1f445b589522ce9192b70ef9738044e3470a522bba60101b6bbe500ec94f8e'"}
