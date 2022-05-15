@@ -15,13 +15,13 @@ export const fetchData = async (callback) =>
 export const sortColleagueList = (a, b, sort) => {
   const sortA = a[sort.toSortBy] ? a[sort.toSortBy].toLowerCase() : '';
   const sortB = b[sort.toSortBy] ? b[sort.toSortBy].toLowerCase() : '';
-  if (sortA < sortB) {
+  if ((sortA < sortB && sortA.trim() !== '') || sortB.trim() === '') {
     if (sort.byDescending) {
       return 1;
     }
     return -1;
   }
-  if (sortA > sortB) {
+  if (sortA > sortB || sortA.trim() === '') {
     if (sort.byDescending) {
       return -1;
     }

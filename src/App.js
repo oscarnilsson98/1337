@@ -27,7 +27,7 @@ export default function App() {
       <Toolbar filter={filter} setFilter={setFilter} sort={sort} setSort={setSort}
         viewOption={viewOption} setViewOption={setViewOption} />
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} data-testid="colleague-grid">
           {colleagues
             .filter(colleague => filterColleagueList(colleague, filter))
             .sort((a, b) => sortColleagueList(a, b, sort))

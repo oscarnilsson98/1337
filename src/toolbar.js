@@ -30,19 +30,19 @@ export default function Toolbar(data) {
 function ViewOptionRow(data) {
     const { selectOptions, viewOption, setViewOption } = data;
     return [
-        <Grid item xs={2} key='viewOptionLabel' className="centeredText">
-            <InputLabel>
+        <Grid item xs={2} key='viewOptionLabelGrid' className="centeredText">
+            <InputLabel data-testid='viewOptionLabel'>
                 Select View Option
             </InputLabel>
         </Grid>,
-        <Grid item xs={2} key='viewOptionSelect'>
+        <Grid item xs={2} key='viewOptionSelectGrid'>
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                    <Select value={viewOption}
+                    <Select data-testid='viewOptionSelect' value={viewOption}
                         onChange={event => setViewOption(event.target.value)}
                     >
                         {selectOptions.map(option => (
-                            <MenuItem key={option} value={option}>{option}</MenuItem>
+                            <MenuItem data-testid={`option-${option}`} key={option} value={option}>{option}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>
@@ -54,26 +54,26 @@ function ViewOptionRow(data) {
 function SortRow(data) {
     const { selectOptions, sort, setSort } = data;
     return [
-        <Grid item xs={2} key='sortLabel' className="centeredText">
-            <InputLabel>
-                Sort by  {sort.byDescending ? 'Descending' : 'Ascending'}
+        <Grid item xs={2} key='sortLabelGrid' className="centeredText">
+            <InputLabel data-testid='sortLabel'>
+                Sort by {sort.byDescending ? 'Descending' : 'Ascending'}
             </InputLabel>
         </Grid>,
-        <Grid item xs={2}  key='sortSelect'>
+        <Grid item xs={2}  key='sortSelectGrid'>
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                    <Select value={sort.toSortBy}
+                    <Select value={sort.toSortBy} data-testid='sortSelect'
                         onChange={event => setSort({ byDescending: sort.byDescending, toSortBy: event.target.value })}
                     >
                         {selectOptions.map(option => (
-                            <MenuItem key={option} value={option}>{option}</MenuItem>
+                            <MenuItem data-testid={`option-${option}`} key={option} value={option}>{option}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>
             </Box>
         </Grid>,
-        <Grid item xs={2} key='sortSwitch'>
-            <Switch checked={sort.byDescending}
+        <Grid item xs={2} key='sortSwitchGrid'>
+            <Switch checked={sort.byDescending} data-testid='sortSwitch'
                 onChange={event => setSort({ byDescending: event.target.checked, toSortBy: sort.toSortBy })} />
         </Grid>
     ];
@@ -82,26 +82,26 @@ function SortRow(data) {
 function FilterRow(data) {
     const { selectOptions, filter, setFilter } = data;
     return [
-        <Grid item xs={2} key='filterLabel' className="centeredText">
-            <InputLabel>
+        <Grid item xs={2} key='filterLabelGrid' className="centeredText">
+            <InputLabel data-testid='filterLabel'>
                 Filter by
             </InputLabel>
         </Grid>,
-        <Grid item xs={2} key='filterSelect'>
+        <Grid item xs={2} key='filterSelectGrid'>
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                    <Select value={filter.toFilterBy}
+                    <Select value={filter.toFilterBy} data-testid='filterSelect'
                         onChange={event => setFilter({ searchString: filter.searchString, toFilterBy: event.target.value })}
                     >
                         {selectOptions.map(option => (
-                            <MenuItem key={option} value={option}>{option}</MenuItem>
+                            <MenuItem data-testid={`option-${option}`} key={option} value={option}>{option}</MenuItem>
                         ))}
                     </Select>
                 </FormControl>
             </Box>
         </Grid>,
-        <Grid item xs={2} key='filterInput'>
-            <Input value={filter.searchString}
+        <Grid item xs={2} key='filterInputGrid'>
+            <Input value={filter.searchString} data-testid='filterInput'
                 onChange={event => setFilter({ searchString: event.target.value, toFilterBy: filter.toFilterBy })} />
         </Grid>
     ];
