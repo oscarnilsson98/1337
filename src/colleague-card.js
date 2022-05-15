@@ -9,11 +9,12 @@ import './colleague-card.css';
 
 export default function ColleagueCard(data) {
   const { colleague } = data;
+  const colleagueImage = colleague.imagePortraitUrl !== null ? colleague.imagePortraitUrl : colleague.imageWallOfLeetUrl;
   return (
     <Card sx={{ minWidth: 250 }}>
       <CardContent>
-        <div class="img-container">
-          <img class="colleague-image" src={colleague.imagePortraitUrl} />
+        <div className="img-container">
+          <img className="colleague-image" src={colleagueImage} />
         </div>
         <Grid container spacing={2}>
           <Grid item xs={8}>

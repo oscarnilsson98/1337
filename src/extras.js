@@ -1,4 +1,4 @@
-export const fetchData = async () =>
+export const fetchData = async (callback) =>
 {
   var response = await fetch('https://api.1337co.de/v3/employees', {
         method: "GET",
@@ -9,5 +9,15 @@ export const fetchData = async () =>
     })
     .catch(err => console.warn('fetching data from 1337 failed', err));
     const json = await response.json();
-    return json;
+    callback(json);
+}
+
+export const filterColleagueList = (colleague, filter) => {
+  if (filter.searchString === '') {
+    return true;
+  }
+  if (colleague[filter.toFilterBy] !== null && colleague[filter.toFilterBy].toLowerCase().includes(filter.searchString.toLowerCase())) {
+    return true;
+  }
+  return false;
 }
