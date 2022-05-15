@@ -12,6 +12,24 @@ export const fetchData = async (callback) =>
     callback(json);
 }
 
+export const sortColleagueList = (a, b, sort) => {
+  const sortA = a[sort.toSortBy] ? a[sort.toSortBy].toLowerCase() : '';
+  const sortB = b[sort.toSortBy] ? b[sort.toSortBy].toLowerCase() : '';
+  if (sortA < sortB) {
+    if (sort.byDescending) {
+      return 1;
+    }
+    return -1;
+  }
+  if (sortA > sortB) {
+    if (sort.byDescending) {
+      return -1;
+    }
+    return 1;
+  }
+  return 0;
+}
+
 export const filterColleagueList = (colleague, filter) => {
   if (filter.searchString === '') {
     return true;
