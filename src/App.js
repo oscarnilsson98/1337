@@ -1,11 +1,11 @@
-import React, { Component, useState } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import ColleagueCard from './colleague-card';
 import { fetchData } from './extras';
 import './App.css';
 
-
-
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
     this.state = { data: [] };
@@ -17,29 +17,21 @@ class App extends Component {
   }
 
   render() {
-    console.log('state', this.state.data)
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload. POP
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h2>The fellowship of tretton37</h2>
         </header>
-        <div>
-          {this.state.data.map(futureColleague => `${futureColleague.name}, `)}
-        </div>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            {this.state.data.map(colleague => (
+              <Grid item xs={12} sm={6} md={4} lg={3}>
+                  <ColleagueCard colleague={colleague} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </div>
     );
   }
 }
-
-export default App;
